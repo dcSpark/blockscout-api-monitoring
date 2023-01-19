@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  blockscout-api-monitoring:
+    image: blockscout-api-monitoring:v0.0.1
+    ports:
+    - 6060:6060

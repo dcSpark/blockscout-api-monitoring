@@ -1,0 +1,17 @@
+name: Build blockscout-api-monitoring
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
+    with:
+      REGISTRY: dcspark
+      REPOSITORY: blockscout-api-monitoring
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      
