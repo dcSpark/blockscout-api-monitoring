@@ -6,6 +6,11 @@ import routes from './routes/blockscout';
 
 const router: Express = express();
 
+process.on('SIGINT', function() {
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+  // some other closing procedures go here
+  process.exit(0);
+});
 /** Logging */
 router.use(morgan('dev'));
 /** Parse the request */
@@ -42,3 +47,5 @@ router.use((req, res, next) => {
 const httpServer = http.createServer(router);
 const PORT: any = process.env.PORT ?? 6060;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
+
+
