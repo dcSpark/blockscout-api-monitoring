@@ -1,4 +1,4 @@
-name: Build blockscout-api-monitoring
+name: Build Workflow
 
 on:
   workflow_call:
