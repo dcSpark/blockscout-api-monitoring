@@ -43,13 +43,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
 
       - name: Build and push blockscout-api-monitoring
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: |
-            ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}:${{ env.IMAGE_TAG }}
-            ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}:latest
-
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
