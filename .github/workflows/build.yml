@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
+    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@master
     with:
       REGISTRY: dcspark
       REPOSITORY: blockscout-api-monitoring
