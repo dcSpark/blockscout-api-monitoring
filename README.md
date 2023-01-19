@@ -1,3 +1,2 @@
 # blockscout-api-monitoring
 
-
