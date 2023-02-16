@@ -54,7 +54,7 @@ jobs:
             type=pep440,pattern={{version}}
             type=sha
             
-      - name: Build and push ${{ inputs.REPOSITORY }}
+      - name: Build and push ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
         uses: docker/build-push-action@v3
         with:
           context: .
