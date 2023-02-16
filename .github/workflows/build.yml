@@ -3,14 +3,14 @@ name: Build blockscout-api-monitoring
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build-and-deploy:
-    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@master
+    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
     with:
       REGISTRY: dcspark
       REPOSITORY: blockscout-api-monitoring
