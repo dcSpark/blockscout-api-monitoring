@@ -9,28 +9,20 @@ on: issue_comment
 
 
 jobs:
-#  run_tests:
-#    runs-on: ubuntu-latest
-#    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '#runtest') }}
-#    strategy:
-#      matrix:
-#        node-version: [16.x]
-#        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-#
-#    steps:
-#    - uses: actions/checkout@v3
-#    - name: Use Node.js ${{ matrix.node-version }}
-#      uses: actions/setup-node@v3
-#      with:
-#        node-version: ${{ matrix.node-version }}
-#        cache: 'npm'
-#    - run: npm install
-#    - run: npm test
-#
+  build-and-deploy:
+    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
+    uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
+    with:
+      REGISTRY: dcspark
+      REPOSITORY: blockscout-api-monitoring
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
   pr_comment:
     # This job only runs for pull request comments
     name: PR comment
-    #needs: run_tests
+    needs: build-and-deploy
     if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
     runs-on: ubuntu-latest
     steps:
@@ -46,4 +38,6 @@ jobs:
           pr_number: ${{ github.event.issue.number }}
         env:
           NUMBER: ${{ github.event.issue.number }}
+
+
 
