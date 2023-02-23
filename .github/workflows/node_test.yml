@@ -30,7 +30,7 @@ jobs:
   pr_comment:
     # This job only runs for pull request comments
     name: PR comment
-    needs: run_tests
+    #needs: run_tests
     if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
     runs-on: ubuntu-latest
     steps:
