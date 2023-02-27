@@ -51,6 +51,7 @@ jobs:
             ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
           tags: |
             type=ref,event=branch
+            type=ref,event=pr
             type=pep440,pattern={{version}}
             type=sha
             
