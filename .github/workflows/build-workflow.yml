@@ -50,6 +50,7 @@ jobs:
           images: |
             ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
           tags: |
+            type=raw,value=${{ github.ref_name }}
             type=ref,event=branch
             type=ref,event=pr
             type=pep440,pattern={{version}}
