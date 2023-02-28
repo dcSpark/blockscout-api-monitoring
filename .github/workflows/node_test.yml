@@ -31,7 +31,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: |
-            ### `npm test` result is **${{ needs.run_tests.result }}**
+            ### New docker image in PR is created - use following name: result is **$REGISTRY/$REPOSITORY:latest**
             * actions url: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/
             * triggering comment url: ${{ github.event.comment.html_url }}
             * triggering user: [${{ github.event.comment.user.login }}](${{ github.event.comment.user.html_url }}) 
