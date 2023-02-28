@@ -36,8 +36,10 @@ jobs:
         run: echo '${{ toJSON(github) }}'
         
       - name: Set source branch
-        run: curl -s -u ${{ secrets.RO_GITHUB_TOKEN }}:x-oauth-basic ${{ github.event.issue.pull_request.url }} | jq .head.ref
-        
+        run: | 
+          curl -s -u ${{ secrets.RO_GITHUB_TOKEN }}:x-oauth-basic ${{ github.event.issue.pull_request.url }} | jq .head.ref
+          echo " GITHUB_HEAD_REF: ${GITHUB_HEAD_REF} "
+          echo " GITHUB_HEAD_REF (short): ${GITHUB_HEAD_REF##*/} "
       - name: Checkout
         uses: actions/checkout@v3
         with:
