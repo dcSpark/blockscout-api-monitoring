@@ -66,11 +66,7 @@ jobs:
           images: |
             ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
           tags: |
-            type=raw,value=${{ github.ref_name }}
-            type=ref,event=branch
-            type=ref,event=pr
-            type=pep440,pattern={{version}}
-            type=sha
+            type=raw,value=${{ env.SOURCE_BRANCH }}-1
             
       - name: Build and push ${{ inputs.REGISTRY }}/${{ inputs.REPOSITORY }}
         uses: docker/build-push-action@v3
