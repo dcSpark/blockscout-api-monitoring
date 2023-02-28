@@ -19,7 +19,7 @@ jobs:
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-
+      RO_GITHUB_TOKEN: ${{ secrets.RO_GITHUB_TOKEN }}
   pr_comment:
     # This job only runs for pull request comments
     name: PR comment
