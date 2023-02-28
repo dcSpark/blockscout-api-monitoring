@@ -5,7 +5,8 @@ on: issue_comment
 
 jobs:
   show-vars:
-    name: build docker image
+    name: Show environment variables
+    runs-on: ubuntu-latest    
     steps:
       - name: Show variables
         run: echo '${{ toJSON(github) }}'  
