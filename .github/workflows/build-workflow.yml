@@ -35,8 +35,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: check_git_permissions
-#          ref: ${{ github.ref_name }}
+          ref: ${{ github.ref_name }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
