@@ -19,6 +19,9 @@ on:
       DOCKERHUB_TOKEN:
         description: Dockerhub username
         required: true
+      RO_GITHUB_TOKEN:
+        description: Github Read only token
+        required: false
 
 env:
   IMAGE_TAG: ${{ github.sha }}
