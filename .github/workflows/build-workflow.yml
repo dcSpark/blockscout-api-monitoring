@@ -37,12 +37,12 @@ jobs:
         
       - name: Set source branch
         run: | 
-          echo "SOURCE_BRANCH=$(curl -s -u ${{ secrets.RO_GITHUB_TOKEN }}:x-oauth-basic ${{ github.event.issue.pull_request.url }} | jq .head.ref)" >> $GITHUB_ENV
+          echo "SOURCE_BRANCH=$(curl -s -u ${{ secrets.RO_GITHUB_TOKEN }}:x-oauth-basic ${{ github.event.issue.pull_request.url }} | jq -r .head.ref)" >> $GITHUB_ENV
           echo " GITHUB_REF: ${GITHUB_REF} "
           echo " GITHUB_REF (short): ${GITHUB_REF##*/} "
       - name: Show branch
         run: |
-          echo "${{ env.SOURCE_BRANCH }}
+          echo ${{ env.SOURCE_BRANCH }}
       - name: Checkout
         uses: actions/checkout@v3
         with:
