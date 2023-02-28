@@ -17,8 +17,8 @@ jobs:
     if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
     uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
     with:
-      REGISTRY: ${{ env.REGISTRY }}
-      REPOSITORY: ${{ env.REPOSITORY }}
+      REGISTRY: $REGISTRY
+      REPOSITORY: $REPOSITORY
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
