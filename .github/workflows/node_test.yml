@@ -15,8 +15,12 @@ jobs:
         id: checkUser
         with:
           require: 'write'
-      - name: close
+      - name: show
         if: steps.checkUser.outputs.check-result == 'false'
+        run: echo ${{ steps.checkUser.outputs.check-result }}
+
+      - name: close
+        if: ${{ steps.checkUser.outputs.check-result }} == 'false'
         run: |
           echo "User doesnt have permissions" 
           exit 1
