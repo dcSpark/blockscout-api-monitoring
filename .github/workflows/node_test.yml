@@ -16,10 +16,10 @@ jobs:
         with:
           require: 'write'
       - name: show
-        run: echo ${{ steps.checkUser.outputs.check-result }}
+        run: echo ${{ steps.checkUser.outputs.require-result}} 
 
       - name: close
-        if: ${{ steps.checkUser.outputs.check-result }} == 'false'
+        if: ${{ steps.checkUser.outputs.require-result }} == 'false'
         run: |
           echo "User doesnt have permissions" 
           exit 1
