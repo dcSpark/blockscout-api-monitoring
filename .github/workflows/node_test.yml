@@ -16,7 +16,6 @@ jobs:
         with:
           require: 'write'
       - name: show
-        if: steps.checkUser.outputs.check-result == 'false'
         run: echo ${{ steps.checkUser.outputs.check-result }}
 
       - name: close
