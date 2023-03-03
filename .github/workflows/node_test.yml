@@ -27,6 +27,7 @@ jobs:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       RO_GITHUB_TOKEN: ${{ secrets.RO_GITHUB_TOKEN }}
+  
   pr_comment:
     # This job only runs for pull request comments
     name: PR comment
@@ -34,8 +35,6 @@ jobs:
     if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
     runs-on: ubuntu-latest
     steps:
-      - name: Get tags
-        run: echo Tags ${{ needs.build-and-deploy.outputs.tags }}
       - name: PR comment with reactions
         uses: thollander/actions-comment-pull-request@v1
         with:
