@@ -22,7 +22,10 @@ on:
       RO_GITHUB_TOKEN:
         description: Github Read only token
         required: false
-
+    outputs:
+      tags:
+        description: Tag assigned to docker image
+        value: ${{ jobs.build-docker-image.outputs.tags }}
 env:
   IMAGE_TAG: ${{ github.sha }}
 
@@ -30,7 +33,6 @@ jobs:
   build-docker-image:
     name: build docker image
     runs-on: ubuntu-22.04
-
     steps:
       - name: Show variables
         run: echo '${{ toJSON(github) }}'
