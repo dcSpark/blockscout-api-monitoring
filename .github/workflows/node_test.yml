@@ -9,7 +9,9 @@ env:
 jobs:
   set-vars:
     name: Set environment variables
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo " ${{ env.REGISTRY }}/${{ env.REPOSITORY }}"
     outputs:
       registry: ${{ env.REGISTRY }}
       repository: ${{ env.REPOSITORY }}
