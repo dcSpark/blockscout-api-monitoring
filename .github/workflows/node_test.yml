@@ -17,7 +17,7 @@ jobs:
       repository: ${{ env.REPOSITORY }}
           
   build-and-deploy:
-    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
+    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#buildimage')
     needs: [set-vars]
     uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
     with:
@@ -32,7 +32,7 @@ jobs:
     # This job only runs for pull request comments
     name: PR comment
     needs: [build-and-deploy,set-vars]
-    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#runtest')
+    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#buildimage')
     runs-on: ubuntu-latest
     steps:
       - name: PR comment with reactions
