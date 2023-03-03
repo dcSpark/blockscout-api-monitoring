@@ -11,7 +11,16 @@ jobs:
     name: Set environment variables
     runs-on: ubuntu-latest
     steps:
-      - run: echo " ${{ env.REGISTRY }}/${{ env.REPOSITORY }}"
+      - uses: actions-cool/check-user-permission@main
+        id: checkUser
+        with:
+          require: 'write'
+      - name: close
+        if: steps.checkUser.outputs.check-result == 'false'
+        with:
+          run: |
+            echo "User doesnt have permissions" 
+            exit 1
     outputs:
       registry: ${{ env.REGISTRY }}
       repository: ${{ env.REPOSITORY }}
