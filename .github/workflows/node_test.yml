@@ -40,7 +40,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: |
-            ### New docker image in PR is created - use following name: result is ** ${{ needs.set-vars.outputs.registry }}/${{ needs.set-vars.outputs.repository }}:latest**
+            ### New docker image in PR is created - use following name: ${{ needs.build-and-deploy.outputs.tags }}**
             * actions url: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/
             * triggering comment url: ${{ github.event.comment.html_url }}
             * triggering user: [${{ github.event.comment.user.login }}](${{ github.event.comment.user.html_url }}) 
