@@ -8,7 +8,7 @@ env:
 
 jobs:
   set-vars:
-    name: Set environment variables
+    name: Check permissions and set environment variables
     runs-on: ubuntu-latest
     steps:
       - uses: actions-cool/check-user-permission@main
