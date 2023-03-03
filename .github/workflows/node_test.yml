@@ -17,10 +17,9 @@ jobs:
           require: 'write'
       - name: close
         if: steps.checkUser.outputs.check-result == 'false'
-        with:
-          run: |
-            echo "User doesnt have permissions" 
-            exit 1
+        run: |
+          echo "User doesnt have permissions" 
+          exit 1
     outputs:
       registry: ${{ env.REGISTRY }}
       repository: ${{ env.REPOSITORY }}
