@@ -28,7 +28,7 @@ jobs:
       repository: ${{ env.REPOSITORY }}
           
   build-and-deploy:
-    if: always () && github.event.issue.pull_request && contains(github.event.comment.body, '#buildimage')
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '#buildimage')
     needs: [set-vars]
     uses: dcSpark/blockscout-api-monitoring/.github/workflows/build-workflow.yml@main
     with:
