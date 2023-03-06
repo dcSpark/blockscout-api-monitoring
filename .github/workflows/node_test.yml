@@ -19,7 +19,7 @@ jobs:
         run: echo ${{ steps.checkUser.outputs.require-result}} 
 
       - name: close
-        if: ${{ ! steps.checkUser.outputs.require-result }}
+        if: ${{ steps.checkUser.outputs.require-result == 'false' }}
         run: |
           echo "User doesnt have permissions" 
           exit 1
